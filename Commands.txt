@@ -1,0 +1,4 @@
+var inputWordFile=sc.textFile("/user/mdgg7/group4/WordCount.txt")
+var words=inputWordFile.flatMap(line => line.split(" "))
+val countOfWords = words.map(word => (word, 1)).reduceByKey{case (x, y) => x + y}.map(item=>item.swap).sortByKey(false,1).map(item=>item.swap).take(10)
+countOfWords.saveAsTextFile("/user/mdgg7/group4/WordCountOutput2")
